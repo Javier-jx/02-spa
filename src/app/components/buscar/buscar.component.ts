@@ -10,6 +10,7 @@ import { HeroesService } from '../../servicios/heroes.service';
 export class BuscarComponent implements OnInit {
 
 heroes:any[]=[]
+bus:string;
 
   constructor( private activatedRoute:ActivatedRoute,
     private _heroesService:HeroesService, 
@@ -18,7 +19,7 @@ heroes:any[]=[]
   ngOnInit(): void {
 
     this.activatedRoute.params.subscribe ( params =>{
-      console.log(params ['bus']);
+      this.bus =params ['bus'];
       this.heroes = this._heroesService.buscarHeroes( params ['bus']);
       console.log( this.heroes );
     });
